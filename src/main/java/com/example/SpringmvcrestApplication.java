@@ -11,8 +11,5 @@ public class SpringmvcrestApplication {
 
         ApplicationContext context = SpringApplication.run(SpringmvcrestApplication.class, args);
 
-        System.out.println("Bootstrap   "+context.containsBeanDefinition("Bootstrap"));
-
-
     }
 }
