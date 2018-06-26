@@ -9,7 +9,7 @@ public class SpringmvcrestApplication {
 
     public static void main(String[] args) {
 
-        ApplicationContext context = SpringApplication.run(SpringmvcrestApplication.class, args);
+       SpringApplication.run(SpringmvcrestApplication.class, args);
 
     }
 }
