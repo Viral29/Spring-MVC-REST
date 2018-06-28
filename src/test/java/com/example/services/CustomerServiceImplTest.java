@@ -21,6 +21,8 @@ import static org.mockito.Mockito.when;
 public class CustomerServiceImplTest {
 
     public static final long ID = 1L;
+    public static final String FIRSTNAME = "Jim";
+    public static final String LASTNAME = "Parson";
     CustomerService customerService;
 
     @Mock
@@ -66,8 +68,8 @@ public class CustomerServiceImplTest {
     public void createNewCustomer() {
         CustomerDTO customerDTO = new CustomerDTO();
         customerDTO.setId(ID);
-        customerDTO.setFirstname("Jim");
-        customerDTO.setLastname("Parson");
+        customerDTO.setFirstname(FIRSTNAME);
+        customerDTO.setLastname(LASTNAME);
 
         Customer savedCustomer = new Customer();
         savedCustomer.setFirstname(customerDTO.getFirstname());
@@ -81,6 +83,27 @@ public class CustomerServiceImplTest {
         assertEquals(customerDTO.getFirstname(),savedDTO.getFirstname());
         assertEquals("/api/v1/customer/1",savedDTO.getCustomerurl());
 
+
+    }
+
+    @Test
+    public void saveCustomerByDTO() {
+        CustomerDTO customerDTO = new CustomerDTO();
+        customerDTO.setId(ID);
+        customerDTO.setFirstname(FIRSTNAME);
+        customerDTO.setLastname(LASTNAME);
+
+        Customer savedCustomer = new Customer();
+        savedCustomer.setFirstname(customerDTO.getFirstname());
+        savedCustomer.setLastname(customerDTO.getLastname());
+        savedCustomer.setId(1L);
+
+        when(customerRepository.save(any(Customer.class))).thenReturn(savedCustomer);
+
+        CustomerDTO savedDTO = customerService.saveCustomerByDTO(ID,customerDTO);
+
+        assertEquals(customerDTO.getFirstname(),savedDTO.getFirstname());
+        assertEquals("/api/v1/customer/1",savedDTO.getCustomerurl());
 
     }
 }

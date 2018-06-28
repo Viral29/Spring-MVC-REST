@@ -59,5 +59,14 @@ public class CustomerServiceImpl implements CustomerService {
 
     }
 
+    @Override
+    public CustomerDTO saveCustomerByDTO(Long id, CustomerDTO customerDTO) {
+
+        customerDTO.setId(id);
+        customerDTO.setCustomerurl("/api/v1/customer/"+id);
+        return createNewCustomer(customerDTO);
+
+    }
+
 
 }
