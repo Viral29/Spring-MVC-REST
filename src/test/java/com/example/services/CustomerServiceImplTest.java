@@ -25,6 +25,7 @@ public class CustomerServiceImplTest {
     public static final long ID = 1L;
     public static final String FIRSTNAME = "Jim";
     public static final String LASTNAME = "Parson";
+    public static final String CUSTOMER_URL = "/api/v1/customer/";
     CustomerService customerService;
 
     @Mock
@@ -83,7 +84,7 @@ public class CustomerServiceImplTest {
         CustomerDTO savedDTO = customerService.createNewCustomer(customerDTO);
 
         assertEquals(customerDTO.getFirstname(),savedDTO.getFirstname());
-        assertEquals("/api/v1/customer/1",savedDTO.getCustomerurl());
+        assertEquals(CUSTOMER_URL +"1",savedDTO.getCustomerurl());
 
 
     }
@@ -105,7 +106,7 @@ public class CustomerServiceImplTest {
         CustomerDTO savedDTO = customerService.saveCustomerByDTO(ID,customerDTO);
 
         assertEquals(customerDTO.getFirstname(),savedDTO.getFirstname());
-        assertEquals("/api/v1/customer/1",savedDTO.getCustomerurl());
+        assertEquals(CUSTOMER_URL +"1",savedDTO.getCustomerurl());
 
     }
 
