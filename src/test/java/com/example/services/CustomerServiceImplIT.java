@@ -2,10 +2,8 @@ package com.example.services;
 
 import com.example.api.v1.mapper.CustomerMapper;
 import com.example.api.v1.model.CustomerDTO;
-import com.example.bootstrap.Bootstrap;
 import com.example.bootstrap.CustomerBootstrap;
 import com.example.domain.Customer;
-import com.example.repositories.CategoryRepository;
 import com.example.repositories.CustomerRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.sql.SQLOutput;
 import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -37,7 +34,7 @@ public class CustomerServiceImplIT {
         System.out.println("Loading all data");
         System.out.println(customerRepository.findAll().size());
 
-        //Bootstrap bootstrap = new Bootstrap(categoryRepository);
+        //CategoryBootstrap bootstrap = new CategoryBootstrap(categoryRepository);
         CustomerBootstrap customerBootstrap = new CustomerBootstrap(customerRepository);
         customerBootstrap.run();
 

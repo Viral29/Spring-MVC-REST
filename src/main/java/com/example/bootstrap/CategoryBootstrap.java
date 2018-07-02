@@ -6,12 +6,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component("Bootstrap")
-public class Bootstrap implements CommandLineRunner
+public class CategoryBootstrap implements CommandLineRunner
  {
      private CategoryRepository categoryRepository;
 
 
-     public Bootstrap(CategoryRepository categoryRepository) {
+     public CategoryBootstrap(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
     @Override
