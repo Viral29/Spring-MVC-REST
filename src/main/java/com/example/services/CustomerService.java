@@ -1,6 +1,8 @@
 package com.example.services;
 
 import com.example.api.v1.model.CustomerDTO;
+import com.example.domain.Customer;
+
 import java.util.List;
 
 public interface CustomerService {
@@ -14,6 +16,8 @@ public interface CustomerService {
     CustomerDTO saveCustomerByDTO(Long id, CustomerDTO customerDTO);
 
     CustomerDTO patchCustomer(Long id, CustomerDTO customerDTO);
+
+    CustomerDTO saveAndReturnDTO(Customer customer);
 
     void deleteCustomerById(Long id);
 

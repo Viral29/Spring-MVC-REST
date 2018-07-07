@@ -55,12 +55,14 @@ public class CustomerServiceImplTest {
     public void getCustomerById() {
         Customer customer = new Customer();
         customer.setId(ID);
+        customer.setFirstname(FIRSTNAME);
+        customer.setLastname(LASTNAME);
 
         when(customerRepository.findById(anyLong())).thenReturn(java.util.Optional.ofNullable(customer));
 
         CustomerDTO customerDTO = customerService.getCustomerById(ID);
 
-        assertEquals(ID,customerDTO.getId().longValue());
+        assertEquals(FIRSTNAME,customerDTO.getFirstname());
 
 
 
@@ -70,7 +72,6 @@ public class CustomerServiceImplTest {
     @Test
     public void createNewCustomer() {
         CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.setId(ID);
         customerDTO.setFirstname(FIRSTNAME);
         customerDTO.setLastname(LASTNAME);
 
@@ -92,7 +93,6 @@ public class CustomerServiceImplTest {
     @Test
     public void saveCustomerByDTO() {
         CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.setId(ID);
         customerDTO.setFirstname(FIRSTNAME);
         customerDTO.setLastname(LASTNAME);
 

@@ -66,9 +66,9 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDTO saveCustomerByDTO(Long id, CustomerDTO customerDTO) {
 
-        customerDTO.setId(id);
-        customerDTO.setCustomerurl(getCustomerURL(id));
-        return createNewCustomer(customerDTO);
+        Customer customer = customerMapper.customerDTOToCustomer(customerDTO);
+        customer.setId(id);
+        return saveAndReturnDTO(customer);
 
     }
 
@@ -95,6 +95,18 @@ public class CustomerServiceImpl implements CustomerService {
                     return  returnDTO;
 
                 }).orElseThrow(ResourceNotFoundException::new);
+    }
+
+    @Override
+    public CustomerDTO saveAndReturnDTO(Customer customer) {
+
+        Customer savedCustomer = customerRepository.save(customer);
+
+        CustomerDTO returnedDTO = customerMapper.customerToCustomerDTO(savedCustomer);
+
+        returnedDTO.setCustomerurl(getCustomerURL(savedCustomer.getId()));
+
+        return returnedDTO;
     }
 
     @Override

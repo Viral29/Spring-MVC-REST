@@ -53,13 +53,11 @@ public class CustomerControllerTest {
         CustomerDTO customerDTO = new CustomerDTO();
         customerDTO.setFirstname(FIRSTNAME);
         customerDTO.setLastname(LASTNAME);
-        customerDTO.setId(ID);
         customerDTO.setCustomerurl(CUSTOMER_URL+ID);
 
         CustomerDTO customerDTO1 = new CustomerDTO();
         customerDTO1.setFirstname("Rachel");
         customerDTO1.setLastname("Green");
-        customerDTO1.setId(2L);
         customerDTO1.setCustomerurl(CUSTOMER_URL+2);
 
         List<CustomerDTO> customerDTOList = Arrays.asList(customerDTO,customerDTO1);
@@ -79,7 +77,6 @@ public class CustomerControllerTest {
         CustomerDTO customerDTO = new CustomerDTO();
         customerDTO.setFirstname(FIRSTNAME);
         customerDTO.setLastname(LASTNAME);
-        customerDTO.setId(ID);
         customerDTO.setCustomerurl(CUSTOMER_URL+ID);
 
         when(customerService.getCustomerById(anyLong())).thenReturn(customerDTO);
